@@ -1,0 +1,25 @@
+/* Header
+-----------------------------------------------*/
+header{
+
+}
+
+/* Content
+-----------------------------------------------*/
+aside {
+    width: 300px;
+    float: left;
+    border-right: 1px solid black;
+}
+
+.task >*{
+    display: inline-block;
+}
+
+.editor {
+    background: #c9c9c9;
+}
+
+.calendarContainer {
+    float: left;
+}

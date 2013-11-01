@@ -1,0 +1,40 @@
+<!doctype html>
+<html ng-app="todo" >
+    <head>
+               <link rel="stylesheet" href="static/styles/master.css">
+
+    </head>
+    <body>
+        <header></header>
+        
+        <div class="content">
+            <aside>
+                <h3>tasks:</h3>
+                <div class="task">
+                    <input type="checkbox">
+                    <p>Task 1</p>
+                    <div class="actions"></div>
+                </div>
+                
+                <div class="editor">
+                    <input type="text">
+                    <button>Add</button>
+                </div>
+            </aside>
+            
+            <div class="calendar">
+                <h3>calendar</h3>
+            </div>
+        </div>
+        
+        <footer></footer>
+    </body>
+    
+    <script src="static/js/libs/angular.min.js"></script>
+
+    <script src="static/js/app.js"></script>
+    <script src="static/js/controllers/tasklistController.js"></script>
+    <script src="static/js/services/storageService.js"></script>
+    
+    
+</html>
