@@ -1,36 +1,51 @@
 <!doctype html>
-<html ng-app="todo" >
+<html ng-app="taskViewer" >
     <head>
-               <link rel="stylesheet" href="static/styles/master.css">
-
+        <link rel="stylesheet" href="static/styles/master.css">
+        <link rel="stylesheet" href="static/styles/ionicons.min.css">
     </head>
     <body>
         <header></header>
         
         <div class="content">
-            <div class="sidebar">
-                
-            </div>
-            <div class="tasklist">
-                <div class="editor">
-                    <input type="text">
-                    <button>Add</button>
+            <div ng-controller="TasksController">
+                <div class="sidebar">
+                    <i class="icon ion-navicon" ng-class="{ 'active': 0 == selectedIndex }" 
+                                            ng-click='applyFilter({}, 0)' title="all"></i>
+                    <i class="icon ion-compose" ng-class="{ 'active': 1 == selectedIndex }" 
+                                            ng-click='applyFilter({done: false}, 1)' title="to do"></i>
+                    <i class="icon ion-checkmark" ng-class="{ 'active': 2 == selectedIndex }" 
+                                            ng-click='applyFilter({done: true}, 2)' title="done"></i>
+                    <i class="icon ion-alert" ng-class="{ 'active': 3 == selectedIndex }" 
+                                            ng-click='applyFilter({priority: 1}, 3)' title="important"></i>
+                    <i class="icon ion-trash-b" ng-class="{ 'active': 4 == selectedIndex }" 
+                                            ng-click='applyFilter({status: "removed"}, 4)' title="removed"></i>
                 </div>
-                <div class="tasks">
-                    <div class="task">
-                        <input type="checkbox">
-                        <p>Task 1</p>
-                        <div class="actions"></div>
+                <div  class="tasklist">
+                    <div class="editor">
+                        <form id="todo-form" ng-submit="add()">
+                            <input type="text" placeholder="What needs to be done?" ng-model="newTaskTitle" autofocus>
+                            <i class="add-icon ion-plus" ng-click="add()"></i>
+                        </form>
                     </div>
-                    <div class="task">
-                        <input type="checkbox">
-                        <p>Task 2</p>
-                        <div class="actions"></div>
+                    
+                    <div class="tasks">
+                        
+                        <div class="task done-{{task.done}}" ng-repeat="task in tasks | filter:filters:query | orderBy: tasksOrder">
+                            <input type="checkbox" ng-model="task.done">
+                            <p>{{task.title}}</p>
+                            <div class="actions"></div>
+                        </div>
+    
                     </div>
+                    Sort by:
+                    <select ng-model="tasksOrder">
+                      <option value="title">title</option>
+                      <option value="description">description</option>
+                      <option value="done">status</option>
+                    </select>
                 </div>
-
             </div>
-            
             <div class="calendar">
 
             </div>
@@ -42,7 +57,7 @@
     <script src="static/js/libs/angular.min.js"></script>
 
     <script src="static/js/app.js"></script>
-    <script src="static/js/controllers/tasklistController.js"></script>
+    <script src="static/js/controllers/taskControllers.js"></script>
     <script src="static/js/services/storageService.js"></script>
     
     
