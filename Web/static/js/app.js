@@ -1,3 +1,3 @@
 "use strict";
 
-var taskViewer = angular.module('taskViewer', []);
+var taskViewer = angular.module('taskViewer', ['perfect_scrollbar']);

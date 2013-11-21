@@ -1,0 +1,34 @@
+<div class="calendarWrapper">
+        <div class="calendar">
+            <div class="days">
+                <table>
+                    <thead>
+                        <tr>
+                            <td class="hour"></td>
+                            <td ng-repeat="day in days">{{day}}</td>
+                        </th>
+                    </thead>
+                </table>
+            </div>
+            <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" refresh-on-change="hours">
+                <table>
+                    <tbody>
+                        <tr ng-repeat="hour in hours">
+                            <td class="hour">{{hour}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </perfect-scrollbar>
+            <div class="footerNavigation">
+                <div class="prev"> < PREV </div>
+                <div class="next"> NEXT > </div>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="sidebar">
+    <i class="icon ion-navicon" ng-class="{ 'active': 0 == selectedIndex }" 
+                            ng-click='applyFilter({}, 0)' title="all"></i>
+    <i class="icon ion-compose" ng-class="{ 'active': 1 == selectedIndex }" 
+                            ng-click='applyFilter({done: false}, 1)' title="to do"></i>
+    <i class="icon ion-checkmark" ng-class="{ 'active': 2 == selectedIndex }" 
+                            ng-click='applyFilter({done: true}, 2)' title="done"></i>
+    <i class="icon ion-alert" ng-class="{ 'active': 3 == selectedIndex }" 
+                            ng-click='applyFilter({priority: 1}, 3)' title="important"></i>
+    <i class="icon ion-trash-b" ng-class="{ 'active': 4 == selectedIndex }" 
+                            ng-click='applyFilter({status: "removed"}, 4)' title="removed"></i>
+</div>
+<div  class="tasklist">
+    <div class="editor">
+        <form id="todo-form" ng-submit="add()">
+            <input type="text" placeholder="What needs to be done?" ng-model="newTaskTitle" autofocus>
+            <i class="add-icon ion-plus" ng-click="add()"></i>
+        </form>
+    </div>
+    
+    <div class="tasks">
+        <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" refresh-on-change="tasks">
+            <div class="task done-{{task.done}}" ng-repeat="task in tasks | filter:filters:query | orderBy: tasksOrder" 
+                title="{{task.description}}">
+                <input type="checkbox" ng-model="task.done">
+                <p>{{task.title}}</p>
+                <div class="actions"></div>
+                
+                <div class=""></div>
+            </div>
+        </perfect-scrollbar>
+    </div>
+    
+    <div class="sorter">
+    Sort by:
+    <select ng-model="tasksOrder">
+      <option value="title">title</option>
+      <option value="description">description</option>
+      <option value="done">status</option>
+    </select>
+    </div>
+</div>

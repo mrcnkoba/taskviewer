@@ -1,6 +1,13 @@
+html{
+    height: 100%;    
+}
 body{
     margin:0;
-
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    font-family:
+        "calibri";
 }
 
 /* Header
@@ -13,21 +20,40 @@ header{
 -----------------------------------------------*/
 
 .content{
-
+    height: 100%;
 }
 
 .tasklist {
     width: 350px;
+    height: 100%;
     float: left;
     border-right: 2px solid #5154ac;
     padding-left: 50px;
     margin-top: 0;
     margin-left: 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 }
 
 .tasks {
-    padding-left: 10px;
-    padding-top: 10px;
+    padding-top: 42px;
+    padding-bottom: 35px;
+    height: 100%;
+    box-sizing:border-box;
+}
+
+    .tasks .scroller{
+        height: 100%;
+        width: 100%;
+        overflow-y: hidden;
+        position: relative;
+    }
+
+.task{
+    padding-left: 6px;  
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 .task >*{
@@ -39,23 +65,37 @@ header{
     margin: 0px;   
 }
 
+.task:hover{
+    background: #f0f1f4;    
+}
+
+.task.done-true p{
+    text-decoration:line-through;    
+}
 
 .editor {
+    position: absolute;
+    top:0;
     background: #5154ac;
     padding: 5px;
     padding-right: 8px;
     overflow: hidden;
+    height: 32px;
+    width: 100%;
+    
 }
 
     .editor input{
         width: 290px;
         padding: 3px;
+    float: left;
     }
 
     .editor .add-icon{
         font-size: 2.0em;
         color: #489d29;
-        float: right;
+        margin-left: 6px;
+        float: left;
     }
 
     .editor .add-icon:hover{
@@ -73,6 +113,7 @@ header{
     height: 100%;
     padding-top: 36px;
     text-align: center;
+    z-index: 2;
 }
 
     .sidebar .icon{
@@ -92,8 +133,18 @@ header{
     
     }
 
+.sorter{
+    color: white;
+    position: absolute;
+    bottom: 0;
+    background: #5154ac;
+    padding: 5px;
+    width: 100%;
+}
+
 .calendarContainer {
     float: left;
 }
+
 
 
