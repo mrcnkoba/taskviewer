@@ -2,6 +2,7 @@ from pymongo import MongoClient
 
 __author__ = 'marcin'
 
+
 #TODO: Insert parameters to config file!
 class Repository(object):
     def __init__(self):
