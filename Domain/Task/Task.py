@@ -8,23 +8,22 @@ __author__ = 'marcin'
 class Task(Entity):
     status = None
     creation_date = None
-    valid_to = None
+    start_date = None
+    end_date = None
     deadline = None
-    valid_from = None
 
-    def __init__(self, creation_date, valid_from, valid_to, deadline=None):
-        if valid_from > valid_to:
-            raise ValueError()
-        self.apply(Created(TaskStatus.ToDo, creation_date, valid_from, valid_to, deadline))
+
+    def __init__(self, creation_date):
+        self.apply(Created(creation_date))
 
     def on_created(self, event):
-        self.status = event.status
+        self.status = TaskStatus.Draft
         self.creation_date = event.creation_date
-        self.valid_from = event.valid_from
-        self.valid_to = event.valid_to
-        self.deadline = event.deadline
 
     def complete(self):
+        if self.status != TaskStatus.ToDo:
+            raise InvalidStateError
+
         self.apply(Completed())
 
     def on_completed(self, event):
@@ -36,22 +35,38 @@ class Task(Entity):
     def on_reopened(self, event):
         self.status = TaskStatus.ToDo
 
+    def assign_to_dates(self, start_date, end_date):
+        if start_date > end_date:
+            raise ValueError
+        self.apply(Assigned(start_date, end_date))
+
+    def on_assigned(self, event):
+        self.start_date = event.start_date
+        self.end_date = event.end_date
+        self.status = TaskStatus.ToDo
+
 # Events
 
-class Completed(Event):
-    pass
-
-
 class Created(Event):
-    def __init__(self, status, creation_date, valid_from, valid_to, deadline=None):
-        self.status = status
+    def __init__(self, creation_date):
         self.creation_date = creation_date
-        self.valid_from = valid_from
-        self.valid_to = valid_to
-        self.deadline = deadline
 
 
 class Reopened(Event):
     pass
 
 
+class Completed(Event):
+    pass
+
+
+class Assigned(Event):
+    def __init__(self, start_date, end_date):
+        self.start_date = start_date
+        self.end_date = end_date
+
+# Errors
+
+class InvalidStateError():
+    def __init__(self):
+        pass
