@@ -27,14 +27,14 @@
         //Actions
         $scope.add = function(){
             $scope.tasks.push({
-                title: $scope.newTaskTitle,
+                title: this.newTaskTitle,
                 description: "",
                 validToDate: new Date(),
                 done: false,
                 priority: 1,
                 status: taskStatus.new
             })
-            $scope.newTaskTitle = '';
+            this.newTaskTitle = '';
         };
         
         $scope.applyFilter = function(filter, $index){

@@ -9,11 +9,10 @@
     
     <body>
         <header></header>
-        
         <div class="content">
-            <span ng-controller="TasksController" ng-include src="'partials/tasklist.html'">loading...</span>
+            <span ng-include src="'partials/tasklist.html'"></span>
             
-            <span ng-controller="CalendarController" ng-include src="'partials/calendar.html'">loading...</span>
+            <span ng-controller="CalendarController" ng-include src="'partials/calendar.html'"></span>
         </div>
         
         <footer></footer>
@@ -25,11 +24,8 @@
     <script src="static/js/libs/jquery.mousewheel.js" ></script>
     <script src="static/js/libs/perfect-scrollbar.js" ></script>
         
-        
     <script src="static/js/app.js"></script>
     <script src="static/js/controllers/taskControllers.js"></script>
     <script src="static/js/services/storageService.js"></script>
-    <script src="static/js/services/scrollbarModule.js" ></script>
-    
-    
+    <script src="static/js/services/scrollbarModule.js" ></script>   
 </html>
