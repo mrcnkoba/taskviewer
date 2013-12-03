@@ -56,11 +56,26 @@
         padding-right: 6px;
     }
 
+    .calendar table td.saturday{
+        background: #ededed;
+    }
+
+    .calendar table td.sunday{
+        background: #e0e0e0;
+    }
+
+    .calendar table td:hover{
+        background: lightgray;
+    }
+
     .calendar .days{
         width: 100%;
         position: absolute;
         top: 0;
-        height: 42px;    
+    }
+
+    .calendar table.daysTable td{
+        height: 36px !important;    
         color: white;
         background: #5154ac;
     }
@@ -72,7 +87,6 @@
         height: 34px;    
         color: white;
         background: #5154ac;
-        padding-top: 4px;
         box-sizing:border-box;
     }
         .calendar .footerNavigation .prev{
@@ -81,4 +95,17 @@
 
         .calendar .footerNavigation .next{
             float: right;
+        }
+
+        .calendar .footerNavigation .icon{
+            font-size: 35px;
+            margin-top: 0;
+            padding-left: 5px;
+            padding-right: 5px;
+            color: #a1abd4;
+            line-height: 1.0em;
+        }
+        
+        .calendar .footerNavigation .icon:hover{
+            color: #dce3ff;
         }

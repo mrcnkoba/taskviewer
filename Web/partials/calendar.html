@@ -1,7 +1,7 @@
 <div class="calendarWrapper">
         <div class="calendar">
             <div class="days">
-                <table>
+                <table class="daysTable">
                     <thead>
                         <tr>
                             <td class="hour"></td>
@@ -10,7 +10,7 @@
                     </thead>
                 </table>
             </div>
-            <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" refresh-on-change="hours">
+            <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10">
                 <table>
                     <tbody>
                         <tr ng-repeat="hour in hours">
@@ -20,15 +20,15 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
+                            <td class="saturday"></td>
+                            <td class="sunday"></td>
                         </tr>
                     </tbody>
                 </table>
             </perfect-scrollbar>
             <div class="footerNavigation">
-                <div class="prev"> < PREV </div>
-                <div class="next"> NEXT > </div>
+                <a class="prev" ng-click="goToPreviousWeek()"><i class="icon ion-arrow-left-b"></i> </a>
+                <a class="next" ng-click="goToNextWeek()"> <i class="icon ion-arrow-right-b"></i> </a>
             </div>
         </div>
 </div>
