@@ -1,0 +1,99 @@
+body{
+    margin:0;
+
+}
+
+/* Header
+-----------------------------------------------*/
+header{
+
+}
+
+/* Content
+-----------------------------------------------*/
+
+.content{
+
+}
+
+.tasklist {
+    width: 350px;
+    float: left;
+    border-right: 2px solid #5154ac;
+    padding-left: 50px;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.tasks {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.task >*{
+    display: inline-block;
+    padding: 3px;
+}
+
+.task p{
+    margin: 0px;   
+}
+
+
+.editor {
+    background: #5154ac;
+    padding: 5px;
+    padding-right: 8px;
+    overflow: hidden;
+}
+
+    .editor input{
+        width: 290px;
+        padding: 3px;
+    }
+
+    .editor .add-icon{
+        font-size: 2.0em;
+        color: #489d29;
+        float: right;
+    }
+
+    .editor .add-icon:hover{
+        font-size: 2.0em;
+        color: #489d29;
+        font-weight: bold;
+    }
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 50px;
+    background: #5154ac;
+    height: 100%;
+    padding-top: 36px;
+    text-align: center;
+}
+
+    .sidebar .icon{
+        font-size: 40px;
+        padding: 5px;
+        color: #a1abd4;
+        line-height: 1.5em;
+    }
+
+    .sidebar .icon:hover{
+        color: #dce3ff;
+    }
+    
+    .sidebar .icon.active{
+        color: white;
+        background: #8c84c9;
+    
+    }
+
+.calendarContainer {
+    float: left;
+}
+
+
