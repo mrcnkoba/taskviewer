@@ -1,7 +1,7 @@
 import unittest
 import datetime
-from Domain.Task.Task import Task, InvalidStateError
-from Domain.Task.TaskStatus import TaskStatus
+from Domain.Tasks.Task import Task, InvalidStateError
+from Domain.Tasks.TaskStatus import TaskStatus
 
 
 class TaskTest(unittest.TestCase):
@@ -85,7 +85,7 @@ class TaskTest(unittest.TestCase):
         self.assertRaises(InvalidStateError, task.complete)
 
     def getTask(self):
-        return Task(self.CreationDate)
+        return Task().create(self.CreationDate)
 
     CreationDate = None
     ValidTo = None
