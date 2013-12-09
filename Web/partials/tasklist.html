@@ -12,14 +12,14 @@
                             ng-click='applyFilter({status: "removed"}, 4)' title="removed"></i>
 </div>
 <div  class="tasklist">
-    <div class="editor">
+    <div class="creator">
         <form id="todo-form" ng-submit="add()">
             <input type="text" placeholder="What needs to be done?" ng-model="newTaskTitle" autofocus>
             <i class="add-icon ion-plus" ng-click="add()"></i>
         </form>
     </div>
     
-    <div class="tasks">
+    <div class="tasks kupa">
         <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" refresh-on-change="tasks">
             <div class="task done-{{task.done}}" ng-repeat="task in tasks | filter:filters:query | orderBy: tasksOrder" 
                 title="{{task.description}}">
@@ -27,17 +27,19 @@
                     <input type="checkbox" ng-model="task.done">
                     <p>{{task.title}}</p>
                     <div class="actions" style="display: none" showonhoverparent>
-                        <a class="prev" ng-click="toggleEdit(task)"><i class="icon ion-ios7-compose"></i> </a>
+                        <a ng-click="toggleEdit(task)"><i class="icon ion-ios7-compose"></i> </a>
+                        <a ng-click="remove(task)"><i class="icon ion-ios7-trash"></i> </a>
                     </div>      
-                    
                 </div>         
                 <div class="taskDetails" ng-show="task.editMode">
+                    title:
+                    <input type="text" ng-model="task.title">
                     details:
-                    <textarea></textarea>
+                    <textarea  ng-model="task.description"></textarea>
                     due date:
-                    <input type="text">
+                    <input type="text"  ng-model="task.date">
                     priority:
-                    <select name="" id="">
+                    <select name="" id=""  ng-model="task.priority">
                         <option value="2">High</option>
                         <option value="1">Normal</option>
                         <option value="0">Low</option>

@@ -53,15 +53,34 @@ header{
     }
 
 .task{
-    padding-left: 6px;  
-    padding-top: 4px;
-    padding-bottom: 4px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin: 0;
+    position: relative;
+}
+
+.task .taskHeader{
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 .taskHeader >*{
     display: inline-block;
     padding: 3px;
 }
+
+.task .actions{
+    right: 5px;  
+    top: 0;
+    position: absolute;
+}
+    .task .actions .icon {
+        font-size: 1.4em;
+        color: lightgray;
+    }
+    .task .actions .icon:hover {
+        color: gray;
+    }
 
 .task p{
     margin: 0px;   
@@ -75,7 +94,23 @@ header{
     text-decoration:line-through;    
 }
 
-.editor {
+.task .taskDetails{
+    background: #f0f1f4;
+    border-top: solid 1px gray;
+    border-bottom: solid 1px gray;
+    padding: 5px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+    .task .taskDetails input, .task .taskDetails textarea{
+        padding: 4px;
+        width: 100%;   
+        margin: 0;
+        box-sizing:border-box;
+    }
+
+.creator {
     position: absolute;
     top:0;
     background: #5154ac;
@@ -87,20 +122,20 @@ header{
     
 }
 
-    .editor input{
+    .creator input{
         width: 290px;
         padding: 3px;
-    float: left;
+        float: left;
     }
 
-    .editor .add-icon{
+    .creator .add-icon{
         font-size: 2.0em;
         color: #489d29;
         margin-left: 6px;
         float: left;
     }
 
-    .editor .add-icon:hover{
+    .creator .add-icon:hover{
         font-size: 2.0em;
         color: #489d29;
         font-weight: bold;
