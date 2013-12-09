@@ -1,17 +1,22 @@
+from abc import abstractmethod
+from mongoengine import Document, ListField
+
 __author__ = 'marcin'
 
 
-class Entity(object):
+class Entity(Document):
     def apply(self, event):
         method_name = str(event.__class__).split(".")[-1].lower()
         method = getattr(self, "on_" + method_name)
-        self.store_event(event)
+    #    self.store_event(event)
         method(event)
 
-    def store_event(self, event):
-        self.events.append(event)
+    meta = {'allow_inheritance': True }
 
-    events = []
+    #def store_event(self, event):
+    #    self.events.append(event)
+
+    #events = ListField()
 
 
 
