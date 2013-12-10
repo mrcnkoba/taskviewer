@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="taskViewer" >
+    <head>
+        <link rel="stylesheet" href="/static/css/master.css">
+        <link rel="stylesheet" href="/static/css/calendar.css">
+        <link rel="stylesheet" href="/static/css/ionicons.min.css">
+        <link rel="stylesheet" href="/static/css/ionicons.min.css">
+        <link href="/static/css/perfect-scrollbar.css" rel="stylesheet">
+        <link href="/static/css/mast.css" rel="stylesheet">
+
+    </head>
+    
+    <body>
+        <header></header>
+        <div class="content">
+            <span ng-include src="'/static/partials/tasklist.html'"></span>
+            
+            <span ng-controller="CalendarController" ng-include src="'/static/partials/calendar.html'"></span>
+        </div>
+        
+        <footer></footer>
+    </body>
+    
+<!--Scripts-->
+    <script src="/static/lib/jquery-latest.min.js" ></script>
+    <script src="/static/lib/angular.min.js"></script>
+    <script src="/static/lib/jquery.mousewheel.js" ></script>
+    <script src="/static/lib/perfect-scrollbar.js" ></script>
+
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/controllers/taskController.js"></script>
+    <script src="/static/js/controllers/calendarController.js"></script>
+    <script src="/static/js/services/storageService.js"></script>
+    <script src="/static/js/services/dateTimeService.js"></script>
+    <script src="/static/js/directives/scrollbarModule.js" ></script>   
+    <script src="/static/js/directives/showOnHoverDirective.js" ></script>   
+</html>
