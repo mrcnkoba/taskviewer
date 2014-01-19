@@ -2,11 +2,12 @@ import unittest
 import datetime
 from Domain.Tasks.Task import Task, InvalidStateError
 from Domain.Tasks.TaskStatus import TaskStatus
+from Domain.Users import User
 
 
 class TaskTest(unittest.TestCase):
     def setUp(self):
-        self.InitialStatus = TaskStatus.Draft
+        self.InitialStatus = TaskStatus.ToDo
         self.CreationDate = datetime.date(2000, 01, 01)
         self.ValidFrom = datetime.date(2001, 01, 01)
         self.ValidTo = datetime.date(2001, 06, 06)
@@ -16,47 +17,26 @@ class TaskTest(unittest.TestCase):
         #given
 
         #when
-        task = self.getTask()
+        task = self.getTask('new')
 
         #then
         self.assertTrue(task.status == self.InitialStatus, "Status")
         self.assertTrue(task.creation_date == self.CreationDate, "Creation Date")
-        self.assertTrue(task.start_date is None, "Valid From")
-        self.assertTrue(task.end_date is None, "Valid To")
-        self.assertTrue(task.deadline is None, "Deadline")
+        self.assertTrue(task.title, 'new')
 
     def testTaskShouldHaveNoDeadline(self):
         #when
-        task = self.getTask()
+        task = self.getTask('new')
 
         #then
         self.assertTrue(task.status == self.InitialStatus, "Status")
         self.assertTrue(task.creation_date == self.CreationDate, "Creation Date")
         self.assertTrue(task.deadline is None, "Deadline")
 
-    def testTaskShouldBeAssignedToDates(self):
-        #given
-        task = self.getTask()
-
-        #when
-        task.assign_to_dates(self.ValidFrom, self.ValidTo)
-
-        #then
-        self.assertTrue(task.start_date == self.ValidFrom, "start date")
-        self.assertTrue(task.end_date == self.ValidTo, "end date")
-
-    def testTaskStartDateShouldNotBeAfterEndDate(self):
-        #given
-        task = self.getTask()
-
-        #when
-        #then
-        self.assertRaises(ValueError, task.assign_to_dates, datetime.date(2000, 01, 01), datetime.date(1999, 01, 01))
 
     def testTaskShouldBeClosed(self):
         # given
-        task = Task(self.CreationDate)
-        task.assign_to_dates(self.ValidFrom, self.ValidTo)
+        task = self.getTask('new')
 
         # when
         task.complete()
@@ -66,8 +46,7 @@ class TaskTest(unittest.TestCase):
 
     def testTaskShouldBeReopened(self):
         # given
-        task = self.getTask()
-        task.assign_to_dates(self.ValidFrom, self.ValidTo)
+        task = self.getTask('new')
         task.complete()
 
         # when
@@ -76,16 +55,21 @@ class TaskTest(unittest.TestCase):
         # then
         self.assertTrue(task.status == TaskStatus.ToDo, "Status")
 
-    def testTaskCannotBeCompletedBeforeAssignment(self):
+    def taskCannotBeCompletedTwice(self):
         # given
-        task = self.getTask()
+        task = self.getTask('new')
 
         # when
+        task.complete()
         # then
         self.assertRaises(InvalidStateError, task.complete)
 
-    def getTask(self):
-        return Task().create(self.CreationDate)
+    def getTask(self, title):
+        user = self.getUser('admin')
+        return Task().create(self.CreationDate, title, user)
+
+    def getUser(self, name):
+        return User().create(name, '')
 
     CreationDate = None
     ValidTo = None

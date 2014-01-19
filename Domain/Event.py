@@ -1,7 +1,5 @@
 import datetime
 
-__author__ = 'marcin'
-
 
 class Event:
     def __init__(self, event_id=None, entity_id=None):

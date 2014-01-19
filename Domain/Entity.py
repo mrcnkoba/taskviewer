@@ -1,8 +1,6 @@
 from abc import abstractmethod
 from mongoengine import Document, ListField
 
-__author__ = 'marcin'
-
 
 class Entity(Document):
     def apply(self, event):

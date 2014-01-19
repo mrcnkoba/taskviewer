@@ -1,8 +1,6 @@
 from Domain.Repository import Repository
 from Domain.Tasks.Task import Task
 
-__author__ = 'marcin'
-
 
 class TaskRepository(Repository):
     def __init__(self):

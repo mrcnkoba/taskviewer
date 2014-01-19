@@ -40,7 +40,7 @@
 
             $scope.toggleEdit = function (task) {
                 task.editMode = !task.editMode;
-                zz
+
             }
 
             $scope.remove = function (task) {

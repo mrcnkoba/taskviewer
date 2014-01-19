@@ -1,12 +1,15 @@
 from flask import Flask, jsonify, render_template, request, abort
-from Service.TaskService import TaskService
+from Service.Services import TaskService
+from Web.auth import requires_auth
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 
 
 @app.route('/')
+@requires_auth
 def index():
+    user = request.authorization.username
     return render_template('index.html')
 
 
@@ -14,9 +17,10 @@ def index():
 def create():
     if not request.json:
         abort(400)
+
     title = request.form['title']
     task_service = TaskService()
-    task_service.create_task(title)
+    task_service.create_task(title, user)
     return jsonify(success=True)
 
 
@@ -25,6 +29,7 @@ def get_tasks():
     task_service = TaskService()
     tasks = task_service.get_all_tasks()
     return jsonify(tasks=tasks)
-    
+
+
 if __name__ == '__main__':
     app.run(debug=True)
