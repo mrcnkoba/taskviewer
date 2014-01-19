@@ -60,8 +60,13 @@
         background: #ededed;
     }
 
+
     .calendar table td.sunday{
         background: #e0e0e0;
+    }
+
+     .calendar table td.withTasks-true{
+        background: #ffa700;
     }
 
     .calendar table td:hover{

@@ -94,10 +94,18 @@ header{
     text-decoration:line-through;    
 }
 
+.task.edit-true{
+    background: #f0f1f4;
+    border-top: solid 2px gray;
+    border-bottom: solid 2px gray;
+}
+
 .task .taskDetails{
     background: #f0f1f4;
-    border-top: solid 1px gray;
-    border-bottom: solid 1px gray;
+    border-top: dashed 1px gray;
+    border-bottom: dashed 1px gray;
+    margin-top: 6px;
+    margin-bottom: 6px;
     padding: 5px;
     padding-left: 6px;
     padding-right: 6px;
@@ -107,7 +115,33 @@ header{
         padding: 4px;
         width: 100%;   
         margin: 0;
+        margin-bottom: 3px;
         box-sizing:border-box;
+    }
+
+    .task .taskDetails .quickdate {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 3px;
+        box-sizing:border-box;
+    }
+
+
+    .task .editButtons {
+        padding: 5px;
+        overflow: hidden
+    }
+
+    .task .editButtons button{
+        padding: 4px;
+    }
+
+    .task .editButtons .save{
+        float: right;
+    }
+
+    .task .editButtons .cancel{
+        float: left;
     }
 
 .creator {
