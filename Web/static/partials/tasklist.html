@@ -18,10 +18,10 @@
             <i class="add-icon ion-plus" ng-click="add()"></i>
         </form>
     </div>
-    
-    <div class="tasks kupa">
+
+    <div class="tasks">
         <perfect-scrollbar class="scroller" wheel-propagation="true" wheel-speed="10" refresh-on-change="tasks">
-            <div class="task done-{{task.done}}" ng-repeat="task in tasks | filter:filters:query | orderBy: tasksOrder" 
+            <div class="task done-{{task.done}}  edit-{{task.editMode}}" ng-repeat="task in tasks | filter:filters:query | orderBy: tasksOrder"
                 title="{{task.description}}">
                 <div class="taskHeader">
                     <input type="checkbox" ng-model="task.done">
@@ -31,20 +31,47 @@
                         <a ng-click="remove(task)"><i class="icon ion-ios7-trash"></i> </a>
                     </div>      
                 </div>         
-                <div class="taskDetails" ng-show="task.editMode">
-                    title:
-                    <input type="text" ng-model="task.title">
-                    details:
-                    <textarea  ng-model="task.description"></textarea>
-                    due date:
-                    <input type="text"  ng-model="task.date">
-                    priority:
-                    <select name="" id=""  ng-model="task.priority">
-                        <option value="2">High</option>
-                        <option value="1">Normal</option>
-                        <option value="0">Low</option>
-                    </select>
-                    <button>Save</button>
+                <div ng-show="task.editMode" >
+<!--
+                    <shadow ng-model="task" array-parent="tasks" on-commit="saveTask(task)" on-revert="cancelEdit(task)">
+                        <div class="taskDetails">
+                            title:
+                            <input type="text" ng-model="task.title">
+                            details:
+                            <textarea  ng-model="task.description"></textarea>
+                            due date:
+                            <datepicker ng-model="task.validToDate" />
+                            priority:
+                            <select name="" id=""  ng-model="task.priority">
+                                <option value="2">High</option>
+                                <option value="1">Normal</option>
+                                <option value="0">Low</option>
+                            </select>
+                        </div>
+                        <div class="editButtons" >
+                            <button class="cancel" ng-click="revert()">Cancel</button>
+                            <button class="save" ng-click="commit()">Save</button>
+                        </div>
+                    </shadow>
+-->
+                    <div class="taskDetails">
+                        title:
+                        <input type="text" ng-model="task.title">
+                        details:
+                        <textarea  ng-model="task.description"></textarea>
+                        due date:
+                        <datepicker ng-model="task.validToDate" />
+                        priority:
+                        <select name="" id=""  ng-model="task.priority">
+                            <option value="2">High</option>
+                            <option value="1">Normal</option>
+                            <option value="0">Low</option>
+                        </select>
+                    </div>
+                    <div class="editButtons" >
+                        <button class="cancel" ng-click="cancelEdit(task)">Cancel</button>
+                        <button class="save" ng-click="saveTask(task)">Save</button>
+                    </div>
                 </div>
             </div>
             

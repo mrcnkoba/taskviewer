@@ -14,14 +14,14 @@
                 <table>
                     <tbody>
                         <tr ng-repeat="hour in hours">
-                            <td class="hour">{{hour}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td class="saturday"></td>
-                            <td class="sunday"></td>
+                            <td class="hour">{{hour.hour}}:00</td>
+                            <td title="{{hour.tooltip('monday')}}" class="withTasks-{{hour.tasks.monday.length > 0}}">{{hour.tasks.monday.length || ""}}</td>
+                            <td title="{{hour.tooltip('tuesday')}}" class="withTasks-{{hour.tasks.tuesday.length > 0}}">{{hour.tasks.tuesday.length || ""}}</td>
+                            <td title="{{hour.tooltip('wednsday')}}" class="withTasks-{{hour.tasks.wednsday.length > 0}}">{{hour.tasks.wednsday.length || ""}}</td>
+                            <td title="{{hour.tooltip('thursday')}}" class="withTasks-{{hour.tasks.thursday.length > 0}}">{{hour.tasks.thursday.length || ""}}</td>
+                            <td title="{{hour.tooltip('friday')}}" class="withTasks-{{hour.tasks.friday.length > 0}}">{{hour.tasks.friday.length || ""}}</td>
+                            <td title="{{hour.tooltip('saturday')}}" class="saturday withTasks-{{hour.tasks.saturday.length > 0}}">{{hour.tasks.saturday.length || ""}}</td>
+                            <td title="{{hour.tooltip('sunday')}}" class="sunday withTasks-{{hour.tasks.sunday.length > 0}}">{{hour.tasks.sunday.length || ""}} </td>
                         </tr>
                     </tbody>
                 </table>

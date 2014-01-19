@@ -1,7 +1,7 @@
 'use strict';
 
 taskViewer.factory('storageService', function () {
-	var STORAGE_ID = 'taskviewer-angularjs';
+	var STORAGE_ID = 'taskviewer-angularsone';
 
 	return {
 		get: function () {
